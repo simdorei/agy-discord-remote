@@ -26,7 +26,9 @@ impl SessionStore {
 
         if file_path.exists() {
             if let Ok(content) = fs::read_to_string(&file_path) {
-                if let Ok(deserialized) = serde_json::from_str::<HashMap<u64, SessionInfo>>(&content) {
+                if let Ok(deserialized) =
+                    serde_json::from_str::<HashMap<u64, SessionInfo>>(&content)
+                {
                     info!("저장된 세션 {}개를 불러왔습니다.", deserialized.len());
                     map = deserialized;
                 }

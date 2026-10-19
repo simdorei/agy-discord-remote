@@ -30,10 +30,7 @@ async fn main() -> anyhow::Result<()> {
         info!("🔓 화이트리스트 미적용 (모든 사용자 메시지 허용)");
     }
 
-    let agy_runner = AgyRunner::new(
-        config.agy_path.clone(),
-        config.auto_approve,
-    );
+    let agy_runner = AgyRunner::new(config.agy_path.clone(), config.auto_approve);
     let store = SessionStore::new("sessions.json");
 
     let handler = Handler::new(config.clone(), agy_runner, store);
