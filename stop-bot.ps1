@@ -8,7 +8,7 @@ Get-Process -Name "agy-discord-remote" | Stop-Process -Force
 Write-Host "agy-discord-remote 프로세스 정지 완료." -ForegroundColor Green
 
 # 2. 왓치독 파워쉘 프로세스 종료
-$watchdogs = Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like "*watchdog.ps1*" }
+$watchdogs = Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like "*agy-discord-remote*watchdog.ps1*" }
 foreach ($wd in $watchdogs) {
     Stop-Process -Id $wd.ProcessId -Force
     Write-Host "왓치독 프로세스 (PID: $($wd.ProcessId)) 정지 완료." -ForegroundColor Green
